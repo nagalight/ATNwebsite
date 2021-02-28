@@ -7,7 +7,7 @@ $pw_heroku = "d7e2d81d7683c4e0b617b5004f9f0c56f2accc2c28e3fcd58e5abdc8165aabcc";
 $conn_string = "host=$host_heroku port=5432 dbname=$db_heroku user=$user_heroku password=$pw_heroku";
 $pg_heroku = pg_connect($conn_string);
 
-if(isset($_POST['submit'])&&!empty($_POST['submit'])){
+if(isset($_POST['login'])&&!empty($_POST['login'])){
     
     $hashpassword = md5($_POST['password']);
     $sql ="select * from accounts where username = '".pg_escape_string($_POST['username'])."' and password ='".$hashpassword."'";
@@ -43,7 +43,7 @@ if(isset($_POST['submit'])&&!empty($_POST['submit'])){
 					<i class="fas fa-lock"></i>
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" name="submit" value="Login">
+				<input type="submit" name="login" value="Login">
 			</form>
 		</div>
 	</body>
