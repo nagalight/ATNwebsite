@@ -10,7 +10,7 @@ $pg_heroku = pg_connect($conn_string);
 if(isset($_POST['submit'])&&!empty($_POST['submit'])){
     
     $hashpassword = md5($_POST['password']);
-    $sql ="select *from accounts where username = '".pg_escape_string($_POST['username'])."' and password ='".$hashpassword."'";
+    $sql ="select * from accounts where username = '".pg_escape_string($_POST['username'])."' and password ='".$hashpassword."'";
     $data = pg_query($pg_heroku,$sql); 
     $login_check = pg_num_rows($data);
     if($login_check > 0){ 
