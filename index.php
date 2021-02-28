@@ -1,3 +1,4 @@
+<?php
 $host_heroku = "ec2-34-203-255-149.compute-1.amazonaws.com";
 $db_heroku = "d642kjd2c1kho9";
 $user_heroku = "nkkmoipxidjucr";
@@ -20,7 +21,7 @@ if(isset($_POST['submit'])&&!empty($_POST['submit'])){
         echo "Invalid Details";
     }
 }
-
+?>
 
 <!DOCTYPE html>
 <html>
