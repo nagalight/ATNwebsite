@@ -33,7 +33,7 @@ if(isset($_POST['submit'])&&!empty($_POST['submit'])){
 		<div class="login">
 			<h1>Login</h1>
 			<p>Login to go any further</p>
-			<form action="authenticate.php" method="post">
+			<form method="post">
 				<label for="username">
 					<i class="fas fa-user"></i>
 				</label>
