@@ -3,12 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Login</title>
-		<p>Login to go any further</p>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
 		<div class="login">
 			<h1>Login</h1>
+			<p>Login to go any further</p>
 			<form action="authenticate.php" method="post">
 				<label for="username">
 					<i class="fas fa-user"></i>
