@@ -18,7 +18,7 @@ if(isset($_POST['submit'])&&!empty($_POST['submit'])){
         echo "Login Successfully";    
     }else{
         
-        header('Location: home.php');
+        header('Location: /home.php');
     }
 }
 ?>
