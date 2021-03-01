@@ -12,7 +12,7 @@ if (!$pg_heroku)
     exit('Error: Could not connect: ' . pg_last_error());
   }
 
-if(isset($_POST[login])){
+if(isset($_POST['login'])){
     
     $hashpassword = md5($_POST[password]);
     $sql ="select * from accounts where username = '$_POST[username]' and password ='$_POST[password]'";
