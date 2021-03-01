@@ -85,7 +85,7 @@ if (!$pg_heroku)
             }
         }
 	
-	if(isset($_POST['update']))
+	if(isset($_GET['update']))
 	{
 		$sql = "update products set name ='$_GET[name]' , value = $_GET[value] , in_store = $_GET[stock] where name ='$_GET[name]';
 		$result = pg_query($pg_heroku, $sql);
@@ -98,7 +98,7 @@ if (!$pg_heroku)
 		}
 	}
 	
-	if(isset($_POST['delete']))
+	if(isset($_GET['delete']))
 	{
 		$sql = "delete from test where id= $_GET[id]";
 		$result = pg_query($pg_heroku, $sql);
@@ -106,7 +106,7 @@ if (!$pg_heroku)
 		  echo "Deleted successfully\n";
 		  header("location:home.php");
 		} else {
-		  echo pg_last_error($dbconn);
+		  echo pg_last_error($pg_heroku);
 		  header("location:home.php");
 		}
 	}
