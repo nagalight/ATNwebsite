@@ -12,16 +12,22 @@ if (!$pg_heroku)
     exit('Error: Could not connect: ' . pg_last_error());
   }
 
-if(isset($_GET['login'])&&!empty($_GET['login'])){
+if(isset($_POST['login'])&&!empty($_POST['login'])){
     
     #$hashpassword = md5($_POST[password]);
-    $sql ="select * from accounts where username = '$_GET[username]' and password ='$_GET[password]'";
-    $data = pg_query($pg_heroku,$sql); 
+    $sql ="select * from accounts where username = '$_POST[username]' and password ='$_POST[password]'";
+    $sql1 = "select superior from accounts where username = '$_POST[username]'";
+    $data = pg_query($pg_heroku,$sql);
+    $data1 = pg_query($pg_heroku,$sql1);
     $login_check = pg_num_rows($data);
     if($login_check > 0)
     { 
-        
-	header('Location: home.php');    
+        if ($data1 = 0)
+	{
+		header('Location: home.php');
+	}else{
+		header('Location: home1.php');
+	}
     }else{
         echo "Invalid Details";
         
