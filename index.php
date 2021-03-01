@@ -9,13 +9,13 @@ $pg_heroku = pg_connect($conn_string);
 
 if (!$pg_heroku)
   {
-    die('Error: Could not connect: ' . pg_last_error());
+    exit('Error: Could not connect: ' . pg_last_error());
   }
 
 if ( !isset($_POST['username'], $_POST['password']) ) 
 {
 	// Could not get the data that should have been sent.
-	die('Please fill both the username and password fields!');
+	exit('Please fill both the username and password fields!');
 }
 
 if ($stmt = $pg_heroku->prepare('SELECT id, password FROM accounts WHERE username = ?')) 
