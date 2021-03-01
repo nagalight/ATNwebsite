@@ -84,6 +84,29 @@ if (!$pg_heroku)
             header("location:home.php");
             }
         }
+	
+	if(isset($_POST['update']))
+	{
+		$sql = "update products set name ='$_GET[name]' , value = $_GET[value] , in_store = $_GET[stock] where name ='$_GET[name]';
+		$result = pg_query($pg_heroku, $sql);
+		if($result){
+		  echo "Updated successfully.";
+		  header("location:home.php");
+		} else {
+		  echo  pg_last_error($pg_heroku);
+		  header("location:home.php");
+		}
+	}
+	
+	$sql = "delete from test where id= $_GET[id]";
+	$result = pg_query($pg_heroku, $sql);
+	if($result){
+	  echo "Deleted successfully\n";
+
+	} else {
+	  echo pg_last_error($dbconn);
+	}
+	
 	?>
 	
 </body>
