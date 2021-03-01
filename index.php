@@ -34,6 +34,10 @@ if ($stmt = $pg_heroku->prepare('SELECT id, password FROM accounts WHERE usernam
 	// Note: remember to use password_hash in your registration file to store the hashed passwords.
 	if (password_verify($_POST['password'], $password)) 
 	{
+		session_regenerate_id();
+		$_SESSION['loggedin'] = TRUE;
+		$_SESSION['name'] = $_POST['username'];
+		$_SESSION['id'] = $id;
 		header('Location: /home.php');
 	} else 
 	{
