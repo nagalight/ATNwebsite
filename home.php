@@ -72,7 +72,7 @@ if (!$pg_heroku)
 		product_number: <input type="number" name="stock" value="" /><br />
 		<input type="submit" name="add" value="Add" />
 		<input type="submit" name="update" value="Update" />
-		
+		<input type="submit" name="delete" value="Delete" />
 	</form>
 	
 	<?php 
@@ -98,15 +98,18 @@ if (!$pg_heroku)
 		}
 	}
 	
-	$sql = "delete from test where id= $_GET[id]";
-	$result = pg_query($pg_heroku, $sql);
-	if($result){
-	  echo "Deleted successfully\n";
-
-	} else {
-	  echo pg_last_error($dbconn);
+	if(isset($_POST['delete']))
+	{
+		$sql = "delete from test where id= $_GET[id]";
+		$result = pg_query($pg_heroku, $sql);
+		if($result){
+		  echo "Deleted successfully\n";
+		  header("location:home.php");
+		} else {
+		  echo pg_last_error($dbconn);
+		  header("location:home.php");
+		}
 	}
-	
 	?>
 	
 </body>
