@@ -21,7 +21,7 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
     if($login_check > 0){ 
         echo "Login Successfully";    
     }else{
-        
+        echo "Invalid Details"
         
     }
 }
