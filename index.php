@@ -19,7 +19,7 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
     $data = pg_query($pg_heroku,$sql); 
     $login_check = pg_num_rows($data);
     if($login_check > 0){ 
-        echo "Login Successfully";    
+        header('Location: home.php');    
     }else{
         echo "Invalid Details";
         
