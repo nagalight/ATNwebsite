@@ -12,13 +12,42 @@ if (!$pg_heroku)
     die('Error: Could not connect: ' . pg_last_error());
   }
 
-if(isset($_POST['login'])&&!empty($_POST['login'])){
-    
-    $hashpassword = md5($_POST['password']);
-    $name = pg_escape_string($_POST['username']);
-    $sql ="select * from accounts where username = '".$name."' and password ='".$hashpassword."'";
-    $data = pg_query($pg_heroku,$sql); 
-    $login_check = pg_num_rows($data);
+if ( !isset($_POST['username'], $_POST['password']) ) 
+{
+	// Could not get the data that should have been sent.
+	die('Please fill both the username and password fields!');
+}
+
+if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) 
+{
+	// Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
+	$stmt->bind_param('s', $_POST['username']);
+	$stmt->execute();
+	// Store the result so we can check if the account exists in the database.
+	$stmt->store_result();
+	
+	if ($stmt->num_rows > 0) 
+	{
+	$stmt->bind_result($id, $password);
+	$stmt->fetch();
+	// Account exists, now we verify the password.
+	// Note: remember to use password_hash in your registration file to store the hashed passwords.
+	if (password_verify($_POST['password'], $password)) 
+	{
+		header('Location: /home.php');
+	} else 
+	{
+		echo 'Incorrect username and/or password!';
+	}
+} else {
+	// Incorrect username
+	echo 'Incorrect username and/or password!';
+
+
+	$stmt->close();
+}
+?>
+
     if($login_check > 0){ 
         
         echo "Login Successfully";    
