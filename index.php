@@ -20,14 +20,13 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
     $data = pg_query($pg_heroku,$sql);
     $data1 = pg_query($pg_heroku,$sql1);
     $login_check = pg_num_rows($data);
-    $data_check= pg_escape_string($data1);
     if($login_check > 0)
     { 
-        if ($data_check = 'boss01')
+        if ($data1 = 'boss01')
 	{
 		#echo $data1;
 		header('Location: home1.php');
-	}elseif ($data_check = 'staff01'){
+	}elseif ($data1 = 'staff01'){
 		#echo $data1;
 		header('Location: home.php');
 	}
