@@ -82,7 +82,7 @@ if (!$pg_heroku)
 	<?php
 	if(isset($_POST['add']))
 	{
-		$sql1 = "insert into products(name, value, in_store)  values($_POST['name'],$_POST['value'], $_POST['stock'])";
+		$sql1 = "INSERT INTO products(name, value, in_store)  VALUES($_GET['name'], $_GET['value'], $_GET['stock'])";
 		$result = pg_query($pg_heroku, $sql1);
 		if($result)
 		{
