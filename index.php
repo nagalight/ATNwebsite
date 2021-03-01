@@ -24,7 +24,8 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
     { 
         if ($data1 = 'boss01')
 	{
-		header('Location: home1.php');
+		echo $data1;
+		#header('Location: home1.php');
 	}elseif ($data1 = 'staff01'){
 		echo $data1;
 		#header('Location: home.php');
