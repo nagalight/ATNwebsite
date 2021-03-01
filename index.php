@@ -25,7 +25,7 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
         if ($data1 = 0)
 	{
 		header('Location: home.php');
-	}else{
+	}else if($data1 > 0){
 		header('Location: home1.php');
 	}
     }else{
