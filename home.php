@@ -32,7 +32,7 @@ if (!$pg_heroku)
 		
 	</div>
 	<?php
-		$query = 'select * from product';
+		$query = 'select * from products';
 		$result = pg_query($pg_heroku, $query);
 		  # Display data column by column
 		$i = 0;
