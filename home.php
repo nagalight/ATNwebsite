@@ -79,7 +79,8 @@ if (!$pg_heroku)
         if(isset($_GET['add'])){
             $sql = "insert into products(id, product_name, value, in_store) values($_GET[id], '$_GET[name]', $_GET[value], $_GET[stock])";
             $result = pg_query($pg_heroku, $sql);
-            if($result){
+            if($result)
+	    {
             echo "Record saved";
             header("location:home.php");
             }
@@ -87,28 +88,24 @@ if (!$pg_heroku)
 	
 	if(isset($_GET['update']))
 	{
-		$sql = "update products set name ='$_GET[name]' , value = $_GET[value] , in_store = $_GET[stock] where name ='$_GET[name]';
+		$sql = "update products set name ='$_GET[name]' , value = $_GET[value] , in_store = $_GET[stock] where name ='$_GET[name]'";
 		$result = pg_query($pg_heroku, $sql);
-		if($result){
+		if($result)
+		{
 		  echo "Updated successfully.";
 		  header("location:home.php");
-		} else {
-		  echo  pg_last_error($pg_heroku);
-		  header("location:home.php");
-		}
+		} 
 	}
 	
 	if(isset($_GET['delete']))
 	{
-		$sql = "delete from test where id= $_GET[id]";
+		$sql = "delete from products where id= $_GET[id]";
 		$result = pg_query($pg_heroku, $sql);
-		if($result){
-		  echo "Deleted successfully\n";
+		if($result)
+		{
+		  echo "Deleted successfully.";
 		  header("location:home.php");
-		} else {
-		  echo pg_last_error($pg_heroku);
-		  header("location:home.php");
-		}
+		} 
 	}
 	?>
 	
