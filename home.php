@@ -78,31 +78,6 @@ if (!$pg_heroku)
 		<input type="submit" name="update" value="Update">
 		
 	</div>
-	<?php
-	$productid = $_POST['id'];
-	$productname = $_POST['name'];
-	$productvalue = $_POST['value'];
-	$productstock = $_POST['stock'];
-	if(isset($_POST['add']))
-	{
-		$sql1 = "insert into products(name, value, in_store)  values('$productname',$productvalue, $productstock)";
-		$result = pg_query($pg_heroku, $sql1);
-		if($result)
-		{
-		  echo "Record saved";
-		}  
-	}
 	
-	if(isset($_POST['update']))
-	{
-		$sql2 = "update products set name ='$productname' , value = $productvalue , in_store = $productstock where name ='$productname';
-		$result = pg_query($pg_heroku, $sql2);
-		if($result){
-		  echo "Updated successfully.";
-		} else {
-		  echo  pg_last_error($pg_heroku);;
-		}
-	}
-	?>
 </body>
 </html>
