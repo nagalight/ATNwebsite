@@ -64,6 +64,43 @@ if (!$pg_heroku)
 		pg_free_result($result);
 
 		echo '</table></body></html>';
+	?>
+	<div>
+		<p>product_id</p>
+		<input type="text" name="id" id="id">
+		<p>product_name</p>
+		<input type="text" name="name" id="name">
+		<p>product_value</p>
+		<input type="text" name="value" id="value">
+		<p>product_number</p>
+		<input type="text" name="stock" id="stock">
+		<input type="submit" name="add" value="Add">
+		<input type="submit" name="update" value="Update">
+		<?php
+		$productid = $_POST['id'];
+		$productname = $_POST['name'];
+		$productvalue = $_POST['value'];
+		$productstock = $_POST['stock'];
+		if(isset($_POST['add'])&&!empty($_POST['add']))
+		{
+			$sql = "insert into products(name, value, in_store)  values('"$productname"','"$productvalue"', '"$productstock"')";
+			$result = pg_query($pg_heroku, $sql);
+			if($result)
+			{
+			  echo "Record saved";
+			}  
+		}
+		if(isset($_POST['update'])&&!empty($_POST['update']))
+		{
+			$sq2 = "update products set name ='"$productname"' , value ='"$productvalue"' , in_store = '"$productstock"' where name ='"$productname"';
+			$result = pg_query($pg_heroku, $sq2);
+			if($result){
+			  echo "Updated successfully.";
+			} else {
+			  echo  pg_last_error($pg_heroku);;
+			}
+		}
 		?>
+	</div>
 </body>
 </html>
