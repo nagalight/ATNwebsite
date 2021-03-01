@@ -66,19 +66,19 @@ if (!$pg_heroku)
 		echo '</table></body></html>';
 	?>
 	<form name="input" action="" method="get">
-		<p>product_id: </p><input type="number" name="id" id="id">
-		<p>product_name: </p><input type="text" name="name" id="name">
-		<p>product_value: </p><input type="number" name="value" id="value">
-		<p>product_number: </p><input type="number" name="stock" id="stock">
-		<input type="submit" name="add" value="Add">
-		<input type="submit" name="update" value="Update">
+		product_id: <input type="number" name="id" value="" /><br />
+		product_name: <input type="text" name="name" value="" /><br />
+		product_value: <input type="number" name="value" value="" /><br />
+		product_number: <input type="number" name="stock" value="" /><br />
+		<input type="submit" name="add" value="Add" />
+		<input type="submit" name="update" value="Update" />
 		
 	</form>
 	
 	<?php
 	if(isset($_GET['add']))
 	{
-		$sql = "insert into products(id,product_name, value, in_store)  values($_GET['id'], '$_GET['name']', $_GET['value'], $_GET['stock'])";
+		$sql = "insert into products(id, product_name, value, in_store)  values($_GET['id'], '$_GET['name']', $_GET['value'], $_GET['stock'])";
 		$result = pg_query($pg_heroku, $sql);
 		if($result)
 		{
