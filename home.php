@@ -83,19 +83,20 @@ if (!$pg_heroku)
 	$productname = $_POST['name'];
 	$productvalue = $_POST['value'];
 	$productstock = $_POST['stock'];
-	if(isset($_POST['add'])&&!empty($_POST['add']))
+	if(isset($_POST['add']))
 	{
-		$sql = "insert into products(name, value, in_store)  values('"$productname"','"$productvalue"', '"$productstock"')";
-		$result = pg_query($pg_heroku, $sql);
+		$sql1 = "insert into products(name, value, in_store)  values('$productname',$productvalue, $productstock)";
+		$result = pg_query($pg_heroku, $sql1);
 		if($result)
 		{
 		  echo "Record saved";
 		}  
 	}
-	if(isset($_POST['update'])&&!empty($_POST['update']))
+	
+	if(isset($_POST['update']))
 	{
-		$sq2 = "update products set name ='"$productname"' , value ='"$productvalue"' , in_store = '"$productstock"' where name ='"$productname"';
-		$result = pg_query($pg_heroku, $sq2);
+		$sql2 = "update products set name ='$productname' , value = $productvalue , in_store = $productstock where name ='$productname';
+		$result = pg_query($pg_heroku, $sql2);
 		if($result){
 		  echo "Updated successfully.";
 		} else {
