@@ -29,9 +29,9 @@ if (!$pg_heroku)
 	<div class="content">
 		<h2>DATABASE</h2>
 		<p>Table of database</p>
-		<?php
 		
-
+	</div>
+	<?php
 		$query = 'select * from product';
 		$result = pg_query($pg_heroku, $query);
 		  # Display data column by column
@@ -65,6 +65,5 @@ if (!$pg_heroku)
 
 		echo '</table></body></html>';
 		?>
-	</div>
 </body>
 </html>
