@@ -78,7 +78,7 @@ if (!$pg_heroku)
 	<?php
 	if(isset($_GET['add']))
 	{
-		$sql = "INSERT INTO products(name, value, in_store)  VALUES('$_GET['name']', $_GET['value'], $_GET['stock'])";
+		$sql = "INSERT INTO products(id,product_name, value, in_store)  VALUES('$_GET['name']', $_GET['value'], $_GET['stock'])";
 		$result = pg_query($pg_heroku, $sql);
 		if($result)
 		{
