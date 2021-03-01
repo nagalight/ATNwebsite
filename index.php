@@ -48,16 +48,6 @@ if ($stmt = $pg_heroku->prepare('SELECT id, password FROM accounts WHERE usernam
 }
 ?>
 
-    if($login_check > 0){ 
-        
-        echo "Login Successfully";    
-    }else{
-        
-        header('Location: /home.php');
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
