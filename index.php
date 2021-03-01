@@ -26,11 +26,12 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
 	{
 		header('Location: home1.php');
 	}else{
-		header('Location: home.php');
+		echo $data1;
+		#header('Location: home.php');
 	}
     }else{
         echo "Invalid Details";
-	    echo $data1;
+	    
         
     }
 }
