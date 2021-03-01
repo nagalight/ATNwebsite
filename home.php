@@ -84,7 +84,7 @@ if (!$pg_heroku)
             header("location:home.php");
             }
         }
-	
+	?>
 	
 </body>
 </html>
