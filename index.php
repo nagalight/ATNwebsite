@@ -22,10 +22,10 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
     $login_check = pg_num_rows($data);
     if($login_check > 0)
     { 
-        if ($data1 === 'false')
+        if ($data1 = false)
 	{
 		header('Location: home.php');
-	}else if($data1 === 'true'){
+	}else if($data1 = true){
 		header('Location: home1.php');
 	}
     }else{
