@@ -88,7 +88,7 @@ if (!$pg_heroku)
 	
 	if(isset($_GET['update']))
 	{
-		$sql = "update products set name ='$_GET[name]' , value = $_GET[value] , in_store = $_GET[stock] where name ='$_GET[name]'";
+		$sql = "update products set product_name ='$_GET[name]' , value = $_GET[value] , in_store = $_GET[stock] where product_name ='$_GET[name]'";
 		$result = pg_query($pg_heroku, $sql);
 		if($result)
 		{
