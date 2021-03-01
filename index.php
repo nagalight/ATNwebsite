@@ -30,6 +30,7 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
 	}
     }else{
         echo "Invalid Details";
+	    echo $data1;
         
     }
 }
