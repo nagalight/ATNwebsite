@@ -24,7 +24,7 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
     $login_check = pg_num_rows($data);
     if($login_check > 0)
     { 
-        if ('$_POST[username]' = '$role1')
+        if ('$_POST[username]' == '$role1')
 	{
 		#echo $data1;
 		header('Location: home1.php');
