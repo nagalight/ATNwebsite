@@ -22,11 +22,11 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
     $login_check = pg_num_rows($data);
     if($login_check > 0)
     { 
-        if ($_POST[username] == 'boss01')
+        if ($_POST[username] = 'boss01')
 	{
 		#echo $data1;
 		header('Location: home1.php');
-	}elseif ($_POST[username] == 'staff01'){
+	}elseif ($_POST[username] = 'staff01'){
 		#echo $data1;
 		header('Location: home.php');
 	}
