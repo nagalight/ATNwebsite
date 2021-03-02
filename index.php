@@ -15,6 +15,8 @@ if (!$pg_heroku)
 if(isset($_POST['login'])&&!empty($_POST['login'])){
     
     #$hashpassword = md5($_POST[password]);
+	$role1 = 'boss01';
+	$role2 = 'staff01';
     $sql ="select * from accounts where username = '$_POST[username]' and password ='$_POST[password]'";
     $sql1 = "select superior from accounts where username = '$_POST[username]' and password ='$_POST[password]'";
     $data = pg_query($pg_heroku,$sql);
@@ -22,13 +24,13 @@ if(isset($_POST['login'])&&!empty($_POST['login'])){
     $login_check = pg_num_rows($data);
     if($login_check > 0)
     { 
-        if ($data1 = true)
+        if ('$_POST[username]' = 'boss01')
 	{
-		echo $data1;
-		#header('Location: home1.php');
+		#echo $data1;
+		header('Location: home1.php');
 	}else{
-		echo $data1;
-		#header('Location: home.php');
+		#echo $data1;
+		header('Location: home.php');
 	}
     }else{
         echo "Invalid Details";
